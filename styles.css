@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #26b3e6; /* 默认海湾蓝 */
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* 防止滚动条出现 */
+}
+
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+}
+
+.sidebar {
+    width: 250px;
+    background: rgba(255, 255, 255, 0.15);
+    color: black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: sticky;
+    top: 0;
+}
+
+.sidebar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: black;
+}
+
+.nav-links ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.nav-links ul li {
+    margin: 15px 0;
+}
+
+.nav-links ul li a,
+.nav-links ul li button {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    display: block;
+    background: rgba(255, 255, 255, 0.35);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav-links ul li a:hover,
+.nav-links ul li button:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    opacity: 1; /* 初始时内容可见 */
+    transition: opacity 0s ease; /* 渐变效果 */
+    position: relative;
+    z-index: 2; /* 确保内容在视频之上 */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.35);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.header .title {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-results {
+    margin-top: 20px;
+}
+
+.search-results input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.result-item {
+    background: rgba(255, 255, 255, 0.35);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.result-item h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.result-item p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.footer {
+    text-align: center;
+    margin-top: auto;
+    font-size: 14px;
+    color: #888;
+}
+
+footer p {
+    font-size: 12px;
+}
+
+.image-module {
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.35); /* 模糊背景 */
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.content-module {
+    background: rgba(255, 255, 255, 0.35);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.content-module h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.content-text {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.ellipsis {
+    display: inline;
+    color: #888;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
