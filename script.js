@@ -6,8 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function applyColor(color) {
         if (color === "gulf-blue") {
             body.style.background = "#26b3e6"; // 海湾蓝
-        } else if (color === "unset") {
-            body.style.background = "#b262b6"; // 霞光紫
+        } else if (color === "sunset-purple") {
+            body.style.background = "rgb(193, 161, 180)"; // 霞光紫
+        } else if (color === "vivid-magenta") {
+            body.style.background = "rgb(197, 40, 115)"; // 璀璨洋红
+        } else if (color === "lightning-yellow") {
+            body.style.background = "rgb(255, 210, 63)"; // 闪电黄
         }
         // 缓存颜色选择
         localStorage.setItem("themeColor", color);
