@@ -74,6 +74,46 @@ body {
     background: rgba(255, 255, 255, 0.5);
 }
 
+/* 霞光紫按钮样式 */
+#sunset-purple {
+    background-color: rgb(193, 161, 180); /* 霞光紫 */
+    color: #333;
+}
+
+#sunset-purple:hover {
+    background-color: rgba(193, 161, 180, 0.8);
+}
+
+/* 璀璨洋红按钮样式 */
+#vivid-magenta {
+    background-color: rgb(197, 40, 115); /* 璀璨洋红 */
+    color: #fff; /* 文字颜色调整为白色，便于显示 */
+}
+
+#vivid-magenta:hover {
+    background-color: rgba(197, 40, 115, 0.8);
+}
+
+/* 海湾蓝按钮样式 */
+#gulf-blue {
+    background-color: #26b3e6; /* 海湾蓝 */
+    color: #fff; /* 文字颜色调整为白色，便于显示 */
+}
+
+#gulf-blue:hover {
+    background-color: rgba(38, 179, 230, 0.8); /* 海湾蓝，透明度调整 */
+}
+
+/* 闪电黄按钮样式 */
+#lightning-yellow {
+    background-color: rgb(255, 210, 63); /* 闪电黄 */
+    color: #333; /* 文字颜色调整为深灰色，便于显示 */
+}
+
+#lightning-yellow:hover {
+    background-color: rgba(255, 210, 63, 0.8); /* 闪电黄，透明度调整 */
+}
+
 .main-content {
     flex-grow: 1;
     padding: 20px;
