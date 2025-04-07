@@ -1,66 +1,30 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const links = document.querySelectorAll(".color-link");
-    const body = document.body;
-
-    // 应用颜色主题
-    function applyColor(color) {
-        if (color === "gulf-blue") {
-            body.style.background = "#26b3e6"; // 海湾蓝
-        } else if (color === "sunset-purple") {
-            body.style.background = "rgb(193, 161, 180)"; // 霞光紫
-        } else if (color === "vivid-magenta") {
-            body.style.background = "rgb(197, 40, 115)"; // 璀璨洋红
-        } else if (color === "lightning-yellow") {
-            body.style.background = "rgb(255, 210, 63)"; // 闪电黄
-        }
-        // 缓存颜色选择
-        localStorage.setItem("themeColor", color);
-    }
-
-    // 加载缓存的颜色主题
-    function loadCachedColor() {
-        const cachedColor = localStorage.getItem("themeColor");
-        if (cachedColor) {
-            applyColor(cachedColor);
-        } else {
-            applyColor("gulf-blue"); // 默认海湾蓝
-        }
-    }
-
-    links.forEach(link => {
-        link.addEventListener("click", () => {
-            applyColor(link.id);
-        });
-    });
-
-    loadCachedColor();
-
-    // 搜索内容
-    function searchContent() {
-        const searchInput = document.getElementById("search-input").value.trim().toLowerCase();
-        const contentModules = [
-            { title: "模块标题1", content: "这是模块1的内容。当内容超过100字时，后面会出现省略号。" },
-            { title: "模块标题2", content: "这是模块2的内容。这里有一些关键词，比如搜索、测试、内容。" },
-            { title: "模块标题3", content: "这是模块3的内容。它包含一些其他信息。" }
-        ];
-        const resultsContainer = document.getElementById("results-container");
-
-        resultsContainer.innerHTML = "";
-        contentModules.forEach(module => {
-            const title = module.title.toLowerCase();
-            const text = module.content.toLowerCase();
-            if (title.includes(searchInput) || text.includes(searchInput)) {
-                const resultDiv = document.createElement("div");
-                resultDiv.className = "result-item";
-                resultDiv.innerHTML = `
-                    <h2>${module.title}</h2>
-                    <p>${module.content}</p>
-                `;
-                resultsContainer.appendChild(resultDiv);
+document.addEventListener('DOMContentLoaded', function () {
+    const colorLinks = document.querySelectorAll('.color-link');
+    colorLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            const color = this.id;
+            switch (color) {
+                case 'gulf-blue':
+                    document.documentElement.style.setProperty('--primary-color', '#26b3e6');
+                    document.documentElement.style.setProperty('--secondary-color', '#1a9bc8');
+                    break;
+                case 'sunset-purple':
+                    document.documentElement.style.setProperty('--primary-color', '#9b59b6');
+                    document.documentElement.style.setProperty('--secondary-color', '#8e44ad');
+                    break;
+                case 'vivid-magenta':
+                    document.documentElement.style.setProperty('--primary-color', '#e74c3c');
+                    document.documentElement.style.setProperty('--secondary-color', '#c0392b');
+                    break;
+                case 'lightning-yellow':
+                    document.documentElement.style.setProperty('--primary-color', '#f1c40f');
+                    document.documentElement.style.setProperty('--secondary-color', '#f39c12');
+                    break;
+                case 'parrot-green':
+                    document.documentElement.style.setProperty('--primary-color', '#2ecc71');
+                    document.documentElement.style.setProperty('--secondary-color', '#27ae60');
+                    break;
             }
         });
-    }
-
-    const searchButton = document.querySelector("button");
-    searchButton.addEventListener("click", searchContent);
+    });
 });
