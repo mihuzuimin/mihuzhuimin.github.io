@@ -5,35 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>搜索结果</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        /* 初始完全隐藏侧边栏 */
+       .sidebar {
+            width: 0;
+            overflow: hidden;
+            visibility: hidden;
+            opacity: 0;
+            transition: width 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        /* 侧边栏展开时的样式 */
+       .sidebar.expanded {
+            width: 256px;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* 主内容区样式，始终为全屏 */
+       .main-content {
+            width: 100%;
+            margin-left: 0;
+            transition: none;
+        }
+
+        /* 触发按钮样式 */
+        #toggle-sidebar {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            backdrop-filter: blur(35%);
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
+            padding: 8px;
+            z-index: 10;
+        }
+
+        /* 关闭按钮样式 */
+        #close-sidebar {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            backdrop-filter: blur(35%);
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
+            padding: 8px;
+            z-index: 10;
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <nav class="sidebar">
-            <div class="logo">迷糊追命</div>
-            <div class="nav-links">
+<body class="bg-gray-100 font-sans">
+    <div class="container flex">
+        <!-- 导航栏 -->
+        <nav class="sidebar bg-white shadow-md h-screen fixed">
+            <button id="close-sidebar" class="text-gray-700 hover:text-blue-500"><i class="fas fa-times"></i></button>
+            <div class="logo p-6 border-b">
+                <span class="text-xl font-bold">迷糊追命</span>
+                <div class="logo-sub text-gray-500">探索无限可能</div>
+            </div>
+            <div class="nav-links p-6">
                 <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li><button class="color-link" id="gulf-blue" onclick="applyColor('gulf-blue')">海湾蓝</button></li>
-                    <li><button class="color-link" id="sunset-purple" onclick="applyColor('sunset-purple')">霞光紫</button></li>
-                    <li><button class="color-link" id="vivid-magenta" onclick="applyColor('vivid-magenta')">璀璨洋红</button></li>
-                    <li><button class="color-link" id="lightning-yellow" onclick="applyColor('lightning-yellow')">闪电黄</button></li>
+                    <li class="mb-4"><a href="index.html" class="flex items-center text-gray-700 hover:text-blue-500"><i class="fas fa-home mr-2"></i><span>首页</span></a></li>
+                    <li><a href="search.html" class="search-link flex items-center text-gray-700 hover:text-blue-500"><i class="fas fa-search mr-2"></i><span>搜索</span></a></li>
                 </ul>
+            </div>
+            <div class="sidebar-footer p-6 border-t fixed bottom-0 w-full">
+                <p class="text-gray-500">© 2025 迷糊追命</p>
             </div>
         </nav>
 
-        <main class="main-content">
+        <!-- 右侧内容区 -->
+        <main class="main-content w-full p-8 relative">
+            <!-- 触发按钮 -->
+            <button id="toggle-sidebar" class="text-gray-700 hover:text-blue-500"><i class="fas fa-bars"></i></button>
+
             <header class="header">
-                <div class="title">搜索结果</div>
+                <div class="title">搜索内容</div>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <label for="search-input" class="sr-only">输入关键词搜索</label>
+                        <input type="text" id="search-input" placeholder="输入关键词搜索...">
+                        <button onclick="searchContent()"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
             </header>
 
-            <section class="search-results" id="search-results">
-                <input type="text" id="search-input" placeholder="输入关键词搜索...">
-                <button onclick="searchContent()">搜索</button>
+            <section class="search-results">
+                <div class="results-header">
+                    <h2>搜索结果</h2>
+                    <div class="results-count">找到 <span id="results-count">0</span> 条结果</div>
+                </div>
                 <div id="results-container"></div>
             </section>
         </main>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButton = document.getElementById('toggle-sidebar');
+            const closeButton = document.getElementById('close-sidebar');
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.querySelector('.main-content');
+
+            function handleButtonVisibility() {
+                if (window.innerWidth > 1024) {
+                    if (sidebar.classList.contains('expanded')) {
+                        toggleButton.style.display = 'none';
+                    } else {
+                        toggleButton.style.display = 'block';
+                    }
+                } else {
+                    toggleButton.style.display = 'block';
+                }
+            }
+
+            toggleButton.addEventListener('click', function () {
+                sidebar.classList.add('expanded');
+                handleButtonVisibility();
+            });
+
+            closeButton.addEventListener('click', function () {
+                sidebar.classList.remove('expanded');
+                handleButtonVisibility();
+            });
+
+            window.addEventListener('resize', handleButtonVisibility);
+
+            handleButtonVisibility();
+        });
+    </script>
     <script src="script.js" defer></script>
+    <script src="search-script.js" defer></script>
 </body>
-</html>
+</html>    
