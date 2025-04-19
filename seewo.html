@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>希沃白板5专区</title>
+    <!-- 保持原有CSS引用 -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <!-- 在head的style标签中添加新样式 -->
+    <style>
+        /* 新增导航栏样式 */
+       .side-nav {
+            @apply bg-white/35 backdrop-blur-[35%] p-4 h-full fixed left-0 top-0 z-50;
+            width: 280px;
+            transition: transform 0.3s;
+            transform: translateX(-100%); /* 初始隐藏侧边栏 */
+        }
+
+       .nav-toggle {
+            @apply bg-white/35 backdrop-blur-[35%] p-2 rounded-lg fixed top-4 left-4 z-50;
+        }
+
+       .close-btn {
+            @apply bg-white/35 backdrop-blur-[35%] absolute top-2 right-2 p-1;
+        }
+
+        /* 内容模块样式 */
+       .content-module {
+            @apply bg-white/25 backdrop-blur-[25%] rounded-xl p-6 mb-6;
+        }
+
+       .module-content {
+            @apply line-clamp-3 overflow-hidden text-ellipsis;
+            max-height: 100px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <!-- 导航栏结构 -->
+    <button class="nav-toggle">☰</button>
+    <nav class="side-nav">
+        <button class="close-btn">×</button>
+        <a href="index.html" class="bg-white/35 backdrop-blur-[35%] px-4 py-2 rounded-lg">首页</a>
+        <div class="container mx-auto px-4">
+            <!-- 重构顶部导航 -->
+            <header class="navbar">
+                <!-- ... 此处可添加导航栏代码（如果需要） ... -->
+            </header>
+
+            <!-- 保持原有内容结构 -->
+            <main>
+                <section class="hero-section">
+                    <h1>欢迎来到希沃白板5专区</h1>
+                </section>
+
+                <!-- 内容区结构调整 -->
+                <div class="main-content grid md:grid-cols-3 gap-8 my-12">
+                    <nav class="table-of-contents md:col-span-1">
+                        <h2>目录</h2>
+                        <ul>
+                            <li><a href="#features">功能介绍</a></li>
+                            <li><a href="#resources">教学资源</a></li>
+                            <li><a href="#community">用户社区</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="content-section md:col-span-2">
+                        <div id="features" class="content-module bg-white p-6 rounded-md shadow-md">
+                            <div class="module-icon text-3xl text-blue-500 mb-4"><i class="fas fa-chalkboard"></i></div>
+                            <h2 class="text-xl font-bold mb-2">功能介绍</h2>
+                            <p class="text-gray-700 mb-4">了解希沃白板5的强大功能，包括多媒体教学、互动课堂等，助力教学创新。</p>
+                            <a href="#" class="text-blue-500 hover:underline">了解更多</a>
+                        </div>
+
+                        <div id="resources" class="content-module bg-white p-6 rounded-md shadow-md">
+                            <div class="module-icon text-3xl text-blue-500 mb-4"><i class="fas fa-book"></i></div>
+                            <h2 class="text-xl font-bold mb-2">教学资源</h2>
+                            <p class="text-gray-700 mb-4">获取丰富的教学资源，包括课件模板、教学视频等，提升课堂效率。</p>
+                            <a href="#" class="text-blue-500 hover:underline">查看资源</a>
+                        </div>
+
+                        <div id="community" class="content-module bg-white p-6 rounded-md shadow-md">
+                            <div class="module-icon text-3xl text-blue-500 mb-4"><i class="fas fa-users"></i></div>
+                            <h2 class="text-xl font-bold mb-2">用户社区</h2>
+                            <p class="text-gray-700 mb-4">加入用户社区，与其他教育工作者交流经验，共同成长。</p>
+                            <a href="#" class="text-blue-500 hover:underline">加入社区</a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- 页脚样式增强 -->
+            <footer class="footer bg-gray-800 text-white py-8 mt-12">
+                <div class="container mx-auto text-center">
+                    <div class="footer-content text-center text-gray-500">
+                        <p>© 2025 希沃白板5专区 保留所有权利</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </nav>
+
+    <!-- 添加交互脚本 -->
+    <script>
+        document.querySelector('.nav-toggle').addEventListener('click', () => {
+            document.querySelector('.side-nav').style.transform = 'translateX(0)';
+        });
+        document.querySelector('.close-btn').addEventListener('click', () => {
+            document.querySelector('.side-nav').style.transform = 'translateX(-100%)';
+        });
+    </script>
+</body>
+
+</html>
